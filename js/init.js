@@ -42,8 +42,23 @@ var getJSONData = function(url){
 
 
 function FunctionLogin() {
-  location.href="home.html";
+   
+    var val1 = document.getElementById("input1").value;
+    var val2 = document.getElementById("input2").value;
+
+    if ((val1 === "") || (val2 === "")) {
+      alert("Rellene los campos");
+    }
+    else{
+      location.href="home.html";
+    }
+    
+    
 }
+
+
+  
+
 
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
