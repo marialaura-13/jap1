@@ -52,17 +52,19 @@ function FunctionLogin() {
     else{
       location.href="home.html";
     }
-    
+
+   var usuario = document.getElementById("input1").value;
+   localStorage.setItem("input1", usuario); 
     
 }
-
-
-  
-
-
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
+  
+  if (document.getElementById("user") !== null){
+   document.getElementById("user").innerHTML = "Bienvenido" + " " + localStorage.getItem("input1") + "!";
+  }
 });
+

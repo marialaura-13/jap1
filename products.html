@@ -7,6 +7,7 @@
     <meta name="description" content="">
     <title>eMercado - Todo lo que busques está aquí</title>
 
+    <script src="js/controlUsuario.js"></script>
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -16,11 +17,12 @@
   <body>
     <nav class="site-header sticky-top py-1 bg-dark">
       <div class="container d-flex flex-column flex-md-row justify-content-between">
-        <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio</a>
+        <a class="py-2 d-none d-md-inline-block" href=".html">Inicio</a>
         <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
         <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
         <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
         <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
+        <a id="user" class="py-2 d-none d-md-inline-block"></a>
       </div>
     </nav>
    
@@ -29,16 +31,55 @@
       <div class="text-center p-4">
           <h2>Listado</h2>
       </div>
+      
+  
+   
       <div class="container">
-          <div class="row">
-              <div class="list-group" id="cat-list-container">
+        <div class="row">
+            <div class="col text-right">
+                <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
+                  <label onclick="sortAndShowProducts2()" class="btn btn-light active" id="sortDesc" >
+                    <input type="radio" name="options" autocomplete="off" checked>De Mayor A Menor Precio
+                </label>
+                <label onclick="sortAndShowProducts1()" class="btn btn-light" id="sortAsc" >
+                    <input type="radio" name="options" autocomplete="off">De Menor A Mayor Precio 
+                </label>  
+                  <label onclick="sortAndShowProducts()" class="btn btn-light" id="sortBySoldCount" >
+                        <input type="radio" name="options" autocomplete="off" ><i class="fas fa-sort-amount-down mr-1"></i>Relevancia
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-end">
+          <div class="col-md-6"></div>
+            <div class="col-md-6 col-sm-12 mb-1 container">
+              <div class="row container p-0 m-0">
+                <div class="col">
+                  <p class="font-weight-normal text-right my-2">Precio</p>
+                </div>
+                <div class="col">
+                  <input class="form-control" type="number" min="0" placeholder="min." id="rangeFilterCountMin">
+                </div>
+                <div class="col">
+                  <input class="form-control" type="number" min="0" placeholder="máx." id="rangeFilterCountMax">
+                </div>
+                <div class="col-3 p-0">
+                  <div class="btn-group" role="group">
+                    <button onclick="filtroDePrecio()" class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
+                    <button onclick="Limpiar()" class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
+                  </div>
+                </div>
               </div>
-          </div>
-      </div>
-  </main>
-   
-   
-    <footer class="text-muted bg-light">
+            </div>
+        </div>
+        <div class="row">
+            <div class="list-group" id="cat-list-container">
+            </div>
+        </div>
+    </div>
+</main>
+  
+  <footer class="text-muted bg-light">
       <div class="container">
         <p class="float-right">
           <a href="#">Volver arriba</a>
