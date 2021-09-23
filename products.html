@@ -51,9 +51,17 @@
             </div>
         </div>
         <div class="row justify-content-end">
-          <div class="col-md-6"></div>
+          <div class="col-md-6">
+            <div class="input-group rounded">
+              <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                aria-describedby="search-addon" />
+              <span class="input-group-text border-0" id="search-addon" onclick="search()">
+                <i class="fas fa-search"></i>
+              </span>
+            </div>
+          </div>
             <div class="col-md-6 col-sm-12 mb-1 container">
-              <div class="row container p-0 m-0">
+              <div class="row container p-0 m-0"> 
                 <div class="col">
                   <p class="font-weight-normal text-right my-2">Precio</p>
                 </div>
@@ -73,7 +81,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="list-group" id="cat-list-container">
+            <div class="list-group" id="cat-list-container" onclick="redirectProduct()">
             </div>
         </div>
     </div>

@@ -61,7 +61,9 @@ function sortAndShowProducts2(){
 }
 
 
-
+function redirectProduct(){
+    location.href="product-info.html";
+}
 
 
 function filtroDePrecio(){
@@ -110,8 +112,8 @@ function showProductList(array){
                         <h4 class="mb-1">`+ category.name +`</h4>
                         <small class="text-muted">` + category.soldCount + ` artículos</small>
                     </div>
-                  <p class="mb-1">`+ category.description +`</p>
-                        <h4 class="text-muted">` + category.currency + " " + category.cost + ` </h4>
+                    <p class="mb-1">`+ category.description +`</p>
+                    <h4 class="text-muted">` + category.currency + " " + category.cost + ` </h4>
                 </div>
             </div>
         </div>
