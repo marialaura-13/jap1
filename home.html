@@ -22,7 +22,16 @@
         <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
         <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
         <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-        <a id="user" class="py-2 d-none d-md-inline-block"></a>
+        <div class="btn-group">
+          <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown">
+            <a id="user" class="py-2 d-none d-md-inline-block"></a>
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" href="cart.html">Mi carrito</a>
+            <a class="dropdown-item" href="my-profile.html">Mi cuenta</a>
+            <a class="dropdown-item" onclick="cerrarSesion()">Cerrar sesión</a>
+          </div>
+        </div>
       </div>
     </nav>
     <main role="main">

@@ -68,3 +68,7 @@ document.addEventListener("DOMContentLoaded", function(e){
   }
 });
 
+function cerrarSesion(){
+  localStorage.removeItem("input1");
+  location.href="home.html";
+}

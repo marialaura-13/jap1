@@ -42,7 +42,10 @@ document.addEventListener("DOMContentLoaded", function(e){
 
             
             showImagesGallery(product.images);
-        }
+            productos_Relacionados(product.relatedProducts);
+
+        } 
+        
     });
     // cargo los comentarios o lo que necesito
     cargarComentarios();
@@ -107,4 +110,29 @@ function scoreStars(stars){
     }
 
     return score;
+}
+
+function productos_Relacionados(lista){
+    getJSONData(PRODUCTS_URL).then(function(resultObj){
+        if (resultObj.status === "ok")
+        {
+            productsRelated = resultObj.data;
+            var htmlContentToAppend = "";
+            for (let i=0; i < lista.length; i++) {
+                
+                let imageSrc = productsRelated[lista[i]].imgSrc;
+
+                htmlContentToAppend += `
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="d-block mb-4 h-100">
+                        <img class="img-fluid img-thumbnail" src="` + imageSrc + `" alt="">
+                    </div>
+                </div>
+                `
+
+            }   
+            document.getElementById("producto_relacionado").innerHTML = htmlContentToAppend;  
+        } 
+
+    });           
 }

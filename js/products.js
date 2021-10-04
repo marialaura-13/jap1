@@ -30,7 +30,7 @@ function sortProductsByPriceA(array){
 return result;
 }
 
-function sortProductsByPriceD(array){
+function sortProductsByPriceD(array) {
     let result = [];
     
     result = array.sort(function(a, b) {
@@ -162,3 +162,28 @@ function Limpiar(){
     
     cargarOriginalProduct();
 }
+
+function search(){
+
+}
+
+
+/*function sortProductsByPrice(array,criteria){
+    let result = [];
+    
+    if (criteria === ascendente) {
+    result = array.sort(function(a, b) {
+        if ( a.cost < b.cost ){ return -1; }
+        if ( a.cost > b.cost ){ return 1; }
+        return 0;
+        });
+    }
+    else (criteria === descendente) {
+        result = array.sort(function(a, b) {
+            if ( a.cost > b.cost ){ return -1; }
+            if ( a.cost < b.cost ){ return 1; }
+            return 0;
+        });
+    }
+    return result;           
+}*/
