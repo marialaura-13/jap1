@@ -100,9 +100,10 @@ function showProductList(array){
     for(var i = 0; i < array.length; i++){
         var category = array[i];
 
-        
+       /*
        htmlContentToAppend += `
-        <div class="list-group-item list-group-item-action">
+       <div class="col-4">
+        <div class="list-group-item list-group-item-action container">
             <div class="row">
                 <div class="col-3">
                     <img src="` + category.imgSrc + `" title="`  + `" class="img-thumbnail">
@@ -117,9 +118,25 @@ function showProductList(array){
                 </div>
             </div>
         </div>
+        </div>
         `;
-        
+        */
+        htmlContentToAppend += `
+        <div class="col-4">
+         <div class="list-group-item list-group-item-action container">
+             <div class="row">
+                     <img src="` + category.imgSrc + `" title="`  + `" class="img-thumbnail">
 
+                     <div class="d-flex w-100 justify-content-between">
+                         <h4 class="mb-1">`+ category.name +`</h4>
+                         <small class="text-muted">` + category.soldCount + ` artículos</small>
+                     </div>
+                     <p class="mb-1">`+ category.description +`</p>
+                     <h4 class="text-muted">` + category.currency + " " + category.cost + ` </h4>
+             </div>
+         </div>
+         </div>
+         `;
        
     }
     document.getElementById("cat-list-container").innerHTML = htmlContentToAppend;

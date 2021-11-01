@@ -56,6 +56,9 @@ function FunctionLogin() {
 
    var usuario = document.getElementById("input1").value;
    localStorage.setItem("input1", usuario); 
+
+   var contraseña = document.getElementById("input2").value;
+   localStorage.setItem("input2", contraseña);
     
 }
 

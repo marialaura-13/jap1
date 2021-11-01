@@ -54,14 +54,48 @@
       </div>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 6 (Fecha de entrega: 31/10/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+ 
+  <div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://kingstonplaza.com/wp-content/uploads/2015/07/generic-avatar.png">
+              <span class="font-weight-bold" id="nombreUsuario1"></span>
+              <span class="text-black-50" id="nombre1"></span>
+              <span class="text-black-50" id="correo1"></span>
+              <span class="text-black-50" id="telefono1"></span>
+              <span class="text-black-50" id="pais1"></span>
+              <span class="text-black-50" id="direccion1"></span>
+            </div>
+        </div>
+        <div class="col-md-5 border-right">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h3 class="text-right">Perfil</h3>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-6"><label class="summary-item">Nombre</label><input type="text" class="form-control" id="nombre"></div>
+                    <div class="col-md-6"><label class="summary-item">Apellido</label><input type="text" id="apellido" class="form-control" value=""></div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12"><label class="summary-item">Nombre de Usuario</label><input type="text" id="nombreUsuario" class="form-control"></div> 
+                    <div class="col-md-12"><label class="summary-item">Contraseña</label><input type="password" id="contraseña" class="form-control" value=""></div>
+                    <div class="col-md-12"><label class="summary-item">Número de Teléfono</label><input type="text" id="telefono" class="form-control" value=""></div>
+                    <div class="col-md-12"><label class="summary-item">Correo</label><input type="text" id="correo" class="form-control" value=""></div>    
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-6"><label class="summary-item">Pais</label><input type="text" id="pais" class="form-control" value=""></div>
+                    <div class="col-md-6"><label class="summary-item">Region</label><input type="text" id="region" class="form-control" value=""></div>
+                    <div class="col-md-12"><label class="summary-item">Dirección</label><input type="text" id="direccion" class="form-control" value=""></div>
+                </div>
+                <div class="mt-5 col-6 center"><button class="btn btn-primary btn-lg btn-block" type="button" onclick="guardarUser()">Guardar</button></div>
+            </div>
+        </div>
     </div>
-  </div>
+</div>
+</div>
+</div>
+
+
   <footer class="text-muted bg-light">
     <div class="container">
       <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
