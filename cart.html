@@ -50,30 +50,94 @@
       </div>
       <div class="content">
         <div class="row">
-          <div  id="cat-list-container" class="col-lg-8" ></div>
+            <div id="cat-list-container" class="col-lg-8"></div>
+              
+            
+            <div id="pagoYEnvio" style="display:none;" class="col-lg-8">
+              <button type="button" onclick="cambio()" class="btn btn-primary btn-sm">Articulos</button>
+              <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h3 class="text-right">Datos de Envio y Pago</h3>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-6"><label class="summary-item">Dirección</label><input type="text" id="direccion" class="form-control" value=""></div>
+                    <div class="col-md-6"><label class="summary-item">Region</label><input type="text" id="region" class="form-control" value=""></div>
+                    <div class="col-md-6"><label class="summary-item">Pais</label><input type="text" id="pais" class="form-control" value=""></div>
+                    <div class="col-md-6"><label class="summary-item" >Envío</label>
+                      <div>
+                        <input type="radio" id="Standar" name="drone" value="Standar" checked onchange="sumar()">
+                               
+                        <label for="huey">Standar (5% sobre el total)</label>
+                      </div>
+                      
+                      <div>
+                        <input type="radio" id="Express" name="drone" value="Express" onchange="sumar()">
+                        <label for="dewey">Express (7% sobre el total)</label>
+                      </div>
+                      
+                      <div>
+                        <input type="radio" id="Premium" name="drone" value="Premium" onchange="sumar()">
+                        <label for="louie">Premium (15% sobre el total)</label>
+                      </div></div>
+                </div>
+                <button type="button" class="btn btn-primary launch" data-toggle="modal" data-target="#staticBackdrop">  Formas de Pago
+                </button>
+            
+                <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div class="text-right"> <i class="fa fa-close close" data-dismiss="modal"></i> </div>
+                                <div class="tabs mt-3">
+                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                        <li class="nav-item" role="presentation"> <a class="nav-link active" id="visa-tab" data-toggle="tab" href="#visa" role="tab" aria-controls="visa" aria-selected="true">Tarjeta de Credito/Debito</a> </li>
+                                        <li class="nav-item" role="presentation"> <a class="nav-link" id="paypal-tab" data-toggle="tab" href="#paypal" role="tab" aria-controls="paypal" aria-selected="false">Cuenta Bancaria</a> </li>
+                                    </ul>
+                                    <div class="tab-content" id="myTabContent">
+                                        <div class="tab-pane fade show active" id="visa" role="tabpanel" aria-labelledby="visa-tab">
+                                            <div class="mt-4 mx-4">
+                                                <div class="text-center">
+                                                    <h5>Tarjeta de Credito/Debito</h5>
+                                                </div>
+                                                <div class="form mt-3">
+                                                    <div class="inputbox"> <input type="text" name="name" class="form-control" required="required" id="nombreT"> <span>Nombre del titular</span> </div>
+                                                    <div class="inputbox"> <input type="text" name="name" min="1" max="999" class="form-control" required="required" id="numeroT"> <span>Numero de tarjeta</span></div>
+                                                    <div class="d-flex flex-row">
+                                                        <div class="inputbox"> <input type="text" name="name" min="1" max="999" class="form-control" required="required" id="vencimientoT"> <span>Vencimiento</span> </div>
+                                                        <div class="inputbox"> <input type="text" name="name" min="1" max="999" class="form-control" required="required" id="cvvT"> <span>CVV</span> </div>
+                                                    </div>
+                                                    <div class="px-5 pay"> <button class="btn btn-success btn-block" onclick="datosCompletosT()">Guardar cambios</button> </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="paypal" role="tabpanel" aria-labelledby="paypal-tab">
+                                          
+                                            <div class="px-5 mt-5">
+                                              <div class="text-center">
+                                                <h5>Cuenta Bancaria</h5>
+                                              </div>
+                                                <div class="inputbox"> <input type="text" name="name" class="form-control" required="required" id="banco"> <span>Banco</span> </div>
+                                                <div class="inputbox"> <input type="text" name="name" class="form-control" required="required" id="cuenta"> <span>Numero de cuenta</span> </div>
+                                                <div class="px-5 pay"> <button class="btn btn-success btn-block" onclick="datosCompletosB()">Guardar cambios</button> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div No TOCAR>
           <div class="col-lg-4 ">
             <div class="summary">
               <h3>Resumen</h3>
               <div class="summary-item"><span class="text">Subtotal</span><span class="price" id="subtotal"></span></div>
               <div class="summary-item"><span class="text">Descuento</span><span class="price">$0</span></div>
-              <div class="summary-item"><span class="text">Envío</span><span class="price">$0</span>
-                <div>
-                  <input type="radio" id="Standar" name="drone" value="Standar"
-                         checked>
-                  <label for="huey">Standar (5% sobre el total)</label>
-                </div>
+              <div class="summary-item"><span class="text">Envío</span><span class="price" id="envio"></span></div>
                 
-                <div>
-                  <input type="radio" id="Express" name="drone" value="Express">
-                  <label for="dewey">Express (7% sobre el total)</label>
-                </div>
-                
-                <div>
-                  <input type="radio" id="Premium" name="drone" value="Premium">
-                  <label for="louie">Premium (15% sobre el total)</label>
-                </div></div>
               <div class="summary-item"><span class="text">Total</span><span class="price" id="total"></span></div>
-              <button type="button" class="btn btn-primary btn-lg btn-block">Finalizar</button>
+              <button type="button" class="btn btn-primary btn-lg btn-block" onclick="datosCompletosF()">Finalizar</button>
             </div>
           </div>
         </div>
@@ -114,6 +178,7 @@
 </body>
 
 </html>
+
 
 
 

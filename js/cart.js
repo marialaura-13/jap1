@@ -1,3 +1,5 @@
+var verificoCompra = 0;
+
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
@@ -30,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function(e){
 
 function showCart(array){
     
-    var htmlContentToAppend = "";
+    var htmlContentToAppend = `<button type="button" onclick="cambio()" class="btn btn-primary btn-sm">Envio y Pago</button>`;
     
     for(var i = 0; i < array.length; i++){
         var product = array[i];
@@ -65,7 +67,7 @@ function showCart(array){
                           </div>
                         <div class="col-lg-3.5 price">
                           <span class="currency">` + product.currency + " " + `</span> <span class="price1"> ` + product.unitCost + `</span>
-                          <button class="btn"><i class="fa fa-trash"></i></button>
+                          <button class="btn" onclick="borrarA(this)"><i class="fa fa-trash"></i></button>
                         </div>
                       </div>
                     </div>
@@ -88,42 +90,115 @@ function sumar(){
             let cantidades = document.getElementsByTagName('input');
             let total=0;
             let subtotal=0;
+            let envio=0;
             
 
             for (let i=0; i< precios.length; i++){
                     
                 
-                    total+= parseFloat(precios[i].innerHTML) * parseFloat(cantidades[i].value);
+                    
               
                     subtotal+= parseFloat(precios[i].innerHTML) * parseFloat(cantidades[i].value);   
                 
             
             }
+             envio = subtotal * metodoEnvio();
+             total = subtotal + envio;
+             console.log(envio);
+            document.getElementById('envio').innerHTML="$"+(envio);
             document.getElementById('subtotal').innerHTML="$"+(subtotal);
             document.getElementById('total').innerHTML="$"+(total);  
 
 } 
 
-function sumar1(){
-     
-    //let currency = document.getElementsByClassName('currency');
-    let precios = document.getElementsByClassName('price1');
-    let cantidades = document.getElementsByTagName('input');
-    let total=0;
-    let subtotal=0;
-    
 
-    
-            
-        
-            total+= parseFloat(precios.innerHTML) * parseFloat(cantidades.value);
+
+function borrarA(obj){
+  var root = obj.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
+  root.remove();
+  sumar();
+
+}
+
+
+function cambio(){
+  if (document.getElementById('cat-list-container')) {
+
+    if (document.getElementById('cat-list-container').style.display == 'none') {
+        document.getElementById('cat-list-container').style.display = 'block';
+        document.getElementById('pagoYEnvio').style.display = 'none';
+    }
+    else {
+        document.getElementById('cat-list-container').style.display = 'none';
+        document.getElementById('pagoYEnvio').style.display = 'block';
+    }
+  }
+}
+
+
+function metodoEnvio() { 
+  var metodo = document.getElementsByName("drone");
+  var costo = 0.05;
+
+  if (metodo[2].checked === true){
+    costo = 0.15;
+  }
+
+  if (metodo[1].checked === true){
+    costo = 0.07;
+  }
+
+  if (metodo[0].checked === true){
+    costo = 0.05;
+  }
+  
+  return costo;
+}
+
+function datosCompletosT(){
+    var val1 = document.getElementById("nombreT").value;
+    var val2 = document.getElementById("numeroT").value;
+    var val3 = document.getElementById("vencimientoT").value;
+    var val4 = document.getElementById("cvvT").value;
+   
+
+    if ((val1 === "") || (val2 === "") || (val3 === "") || (val4 === "")) {
+      alert("Rellene los campos");
+    }
+    else{
+      alert("Metodo de pago aceptado!");
+      verificoCompra = 1;
       
-            subtotal+= parseFloat(precios.innerHTML) * parseFloat(cantidades.value);   
-        
-    
-    
-    document.getElementById('subtotal').innerHTML="$"+(subtotal);
-    document.getElementById('total').innerHTML="$"+(total);  
+    }
+}
 
-} 
 
+function datosCompletosB(){
+ 
+  var val5 = document.getElementById("banco").value;
+  var val6 = document.getElementById("cuenta").value;
+
+  if ((val5 === "") || (val6 === "")) {
+    alert("Rellene los campos");
+  }
+  else{
+    alert("Metodo de pago aceptado!");
+    verificoCompra = 1;
+    
+  }
+}
+
+
+
+
+
+function datosCompletosF(){
+  
+  if (verificoCompra == 0) {
+    alert("Ingrese un metodo de pago valido");
+  }
+  else{
+    alert("Compra finalizada!");
+    
+  }
+}
