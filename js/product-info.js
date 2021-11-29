@@ -86,7 +86,7 @@ function showCommentList(array){
   
 
 function cargarComentarios(){
-    getJSONData(PRODUCT_INFO_COMMENTS_URL ).then(function(resultObj){
+    getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function(resultObj){
         if (resultObj.status === "ok")
         {
             commentsArray = resultObj.data;
